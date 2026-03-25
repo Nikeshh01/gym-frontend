@@ -16,7 +16,7 @@ function Home() {
   }, []);
 
   const openWhatsApp = () => {
-    window.open('https://wa.me/919999999999?text=Hi,%20I%20want%20to%20join%20the%20gym!', '_blank');
+    window.open('https://wa.me/917828265598?text=Hi,%20I%20want%20to%20join%20the%20gym!', '_blank');
   };
 
   const scrollToExplore = () => {
