@@ -56,20 +56,22 @@ function Home() {
       {/* EXPLORE GYM SECTION (Sab kuch idhar hai) */}
       <div id="explore-gym-section">
         
-        {/* Dynamic Gallery Section (Admin panel se upload ki hui photos yahan aayengi) */}
+        {/* Dynamic Gallery Section (3 Photos at a time with Smooth Scroll) */}
         <section className="py-20 bg-[#0a0a0a]">
           <h2 className="text-4xl md:text-5xl font-heading text-center mb-16">LIVE <span className="text-[#39FF14]">GALLERY</span></h2>
           
           {gallery.length === 0 ? (
              <div className="text-center text-gray-500 border border-[#333] p-10 max-w-3xl mx-auto rounded-xl">
                <p className="text-xl">Admin is updating the gallery...</p>
-               <p className="text-sm mt-2">Check back soon for latest gym photos!</p>
              </div>
           ) : (
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-4 max-w-7xl mx-auto">
+            // Slider Container
+            <div className="flex overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar gap-6 px-6 max-w-7xl mx-auto">
               {gallery.map((img) => (
-                <div key={img.id} className="overflow-hidden rounded-xl border border-[#222] group">
-                  <img src={img.imageUrl} alt="Gym Activity" className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500" />
+                // Ek photo ka box (w-[31%] matlab screen ka 1/3rd hissa lega)
+                <div key={img.id} className="snap-center shrink-0 w-[85vw] sm:w-[45vw] md:w-[31%] h-72 overflow-hidden rounded-xl border border-[#222] group relative">
+                  <img src={img.imageUrl} alt="Gym Activity" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition"></div>
                 </div>
               ))}
             </div>
@@ -84,8 +86,8 @@ function Home() {
               
               {/* Basic Plan */}
               <div className="p-8 bg-[#1a1a1a] rounded-3xl border border-[#333] hover:border-[#39FF14] transition flex flex-col items-center text-center">
-                <h3 className="text-2xl font-bold mb-2">IRON PLAN</h3>
-                <div className="text-4xl font-black text-white mb-6">₹1,499<span className="text-lg text-gray-400 font-normal">/mo</span></div>
+                <h3 className="text-2xl font-bold mb-2">1 MONTH PLAN</h3>
+                <div className="text-4xl font-black text-white mb-6">₹500<span className="text-lg text-gray-400 font-normal">/mo</span></div>
                 <ul className="text-gray-400 mb-8 space-y-3 text-left w-full">
                   <li>✔️ Cardio & Weight Area</li>
                   <li>✔️ Locker Facility</li>
@@ -97,21 +99,20 @@ function Home() {
               {/* Pro Plan */}
               <div className="p-8 bg-[#1a1a1a] rounded-3xl border-2 border-[#39FF14] relative transform scale-105 shadow-[0_0_30px_rgba(57,255,20,0.15)] flex flex-col items-center text-center">
                 <div className="absolute -top-4 bg-[#39FF14] text-black px-6 py-1 rounded-full font-bold text-sm">MOST POPULAR</div>
-                <h3 className="text-2xl font-bold mb-2 mt-4">BEAST PLAN</h3>
-                <div className="text-4xl font-black text-[#39FF14] mb-6">₹2,499<span className="text-lg text-gray-400 font-normal">/mo</span></div>
+                <h3 className="text-2xl font-bold mb-2 mt-4">6 MONTHS PLAN</h3>
+                <div className="text-4xl font-black text-[#39FF14] mb-6">₹2,700<span className="text-lg text-gray-400 font-normal">/6 mo</span></div>
                 <ul className="text-gray-400 mb-8 space-y-3 text-left w-full">
                   <li>✔️ Unlimited Gym Access</li>
                   <li>✔️ Customized Diet Plan</li>
-                  <li>✔️ Group Classes (Zumba/Yoga)</li>
-                  <li>✔️ Free Towel Service</li>
+              
                 </ul>
                 <button onClick={openWhatsApp} className="w-full py-3 bg-[#39FF14] text-black font-bold rounded-xl hover:bg-[#2ecc11] transition">Join Now</button>
               </div>
 
               {/* Yearly Plan */}
               <div className="p-8 bg-[#1a1a1a] rounded-3xl border border-[#333] hover:border-[#39FF14] transition flex flex-col items-center text-center">
-                <h3 className="text-2xl font-bold mb-2">LEGACY PLAN</h3>
-                <div className="text-4xl font-black text-white mb-6">₹14,999<span className="text-lg text-gray-400 font-normal">/yr</span></div>
+                <h3 className="text-2xl font-bold mb-2">1 YEAR PLAN</h3>
+                <div className="text-4xl font-black text-white mb-6">₹5,500<span className="text-lg text-gray-400 font-normal">/yr</span></div>
                 <ul className="text-gray-400 mb-8 space-y-3 text-left w-full">
                   <li>✔️ 12 Months All Access</li>
                   <li>✔️ 2 Months Personal Training</li>
@@ -129,13 +130,13 @@ function Home() {
           <h2 className="text-4xl md:text-5xl font-heading text-center mb-16">OUR <span className="text-[#39FF14]">TRAINERS</span></h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="group relative overflow-hidden rounded-xl border border-[#333] hover:border-[#39FF14] transition">
-              <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=500&auto=format&fit=crop" alt="Trainer 1" className="w-full h-96 object-cover group-hover:scale-110 transition-transform duration-500" />
+              <img src="/gym-trainer.jpeg" alt="Trainer 1" className="w-full h-96 object-cover group-hover:scale-110 transition-transform duration-500" />
               <div className="absolute bottom-0 w-full p-6 bg-gradient-to-t from-black to-transparent">
-                <h3 className="text-2xl font-bold text-[#39FF14]">Vikram Singh</h3>
+                <h3 className="text-2xl font-bold text-[#39FF14]">Dileep Rohit</h3>
                 <p className="text-white">Head Coach & Dietician</p>
               </div>
             </div>
-            <div className="group relative overflow-hidden rounded-xl border border-[#333] hover:border-[#39FF14] transition">
+            {/* <div className="group relative overflow-hidden rounded-xl border border-[#333] hover:border-[#39FF14] transition">
               <img src="https://images.unsplash.com/photo-1567013127542-490d757e51fc?q=80&w=500&auto=format&fit=crop" alt="Trainer 2" className="w-full h-96 object-cover group-hover:scale-110 transition-transform duration-500" />
               <div className="absolute bottom-0 w-full p-6 bg-gradient-to-t from-black to-transparent">
                 <h3 className="text-2xl font-bold text-[#39FF14]">Rahul Sharma</h3>
@@ -148,7 +149,7 @@ function Home() {
                 <h3 className="text-2xl font-bold text-[#39FF14]">Neha Kapoor</h3>
                 <p className="text-white">Yoga & Flexibility Coach</p>
               </div>
-            </div>
+            </div> */}
           </div>
         </section>
 
@@ -163,15 +164,15 @@ function Home() {
               <h3 className="text-xl font-bold mb-4 text-white">Gym Address</h3>
               <p className="flex items-start gap-3 text-gray-400 mb-2">
                 <FaMapMarkerAlt className="text-[#39FF14] mt-1 text-xl shrink-0" /> 
-                <span>101, Iron Paradise Building,<br/>Near Metro Station, New Delhi, 110001</span>
+                <span>Bashnee Road,<br/>Badi Colony Chouraha, Bansa Tarkheda, 470672, Damoh</span>
               </p>
             </div>
             <div>
               <h3 className="text-xl font-bold mb-4 text-white">Contact Info</h3>
-              <p className="text-gray-400 mb-2 font-bold tracking-wide">📞 +91 99999 88888</p>
+              <p className="text-gray-400 mb-2 font-bold tracking-wide">📞 +91 7828265598</p>
               <p className="text-gray-400 mb-4">✉️ contact@fitnesspro.in</p>
               <div className="flex gap-4 mt-4">
-                <a href="#" className="p-3 bg-[#1a1a1a] rounded-full hover:bg-[#39FF14] hover:text-black transition cursor-pointer"><FaInstagram className="text-xl" /></a>
+                <a href="https://www.instagram.com/gymlovel.01/?hl=en" className="p-3 bg-[#1a1a1a] rounded-full hover:bg-[#39FF14] hover:text-black transition cursor-pointer"><FaInstagram className="text-xl" /></a>
                 <button onClick={openWhatsApp} className="p-3 bg-[#1a1a1a] rounded-full hover:bg-[#39FF14] hover:text-black transition"><FaWhatsapp className="text-xl" /></button>
               </div>
             </div>
